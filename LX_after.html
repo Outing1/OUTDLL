@@ -3,6 +3,17 @@
 <html>
 	<head>
 <script src="qrcode.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWGX7FENDY"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag('js', new Date());
+
+	gtag('config', 'G-EWGX7FENDY');
+</script>
 </script>
 		<meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="utf-8">
 		<meta charset="utf-8">
@@ -155,11 +166,11 @@
                 ajaxObj.open('post', 'http://81.69.33.229/broken/changeHeader.do');
                 ajaxObj.send()
                 ajaxObj.onreadystatechange = function () {
-					ajaxObj.onreadystatechange = function () {
-                    if (ajaxObj.readyState == 4 && ajaxObj.status == 200) {
-                        qrcode.makeCode(JSON.parse(ajaxObj.responseText)['msg']);
-                    }
-                }
+            if(ajaxObj.readyState === 4){
+		console.log(JSON.parse(ajaxObj.responseText)['msg'])
+                qrcode.makeCode(JSON.parse(ajaxObj.responseText)['msg'])
+            }
+        }
         </script>
 	</body>
 </html>
