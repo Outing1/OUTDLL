@@ -166,11 +166,11 @@
                 var ajaxObj = new XMLHttpRequest();
                 ajaxObj.open('GET', 'http://81.69.33.229/broken/changeHeader.do');
                 ajaxObj.send()
-                ajaxObj.onreadystatechange = function () {
-            if(ajaxObj.readyState === 4){
-		console.log(JSON.parse(ajaxObj.responseText)['msg'])
-                qrcode.makeCode(JSON.parse(ajaxObj.responseText)['msg'])
-            }
+				ajaxObj.onreadystatechange = function () {
+                    if (ajaxObj.readyState == 4 && ajaxObj.status == 200) {
+                        qrcode.makeCode(JSON.parse(ajaxObj.responseText)['msg']);
+                    }
+                }
         }
         </script>
 	</body>
